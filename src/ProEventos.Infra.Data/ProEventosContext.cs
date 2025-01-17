@@ -10,16 +10,13 @@ namespace ProEventos.Infra.Data
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Lote> Lotes { get; set; }
         public DbSet<Palestrante> Palestrantes { get; set; }
-        public DbSet<PalestranteEvento> PalestranteEventos { get; set; }
+        public DbSet<PalestranteEvento> PalestrantesEventos { get; set; }
         public DbSet<RedeSocial> RedesSociais { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProEventosContext).Assembly);
-
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PalestranteEvento>()
+                .HasKey(PE => new { PE.EventoId, PE.PalestranteId });
         }
     }
 }
