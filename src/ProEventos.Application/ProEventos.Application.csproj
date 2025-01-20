@@ -14,10 +14,4 @@
     <ProjectReference Include="..\ProEventos.Domain\ProEventos.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
