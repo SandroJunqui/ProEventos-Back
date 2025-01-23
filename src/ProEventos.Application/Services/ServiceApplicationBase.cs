@@ -21,8 +21,15 @@ namespace ProEventos.Application.Services
 
         public void Add(TEntityDTO entity)
         {
-            var entityMap = _iMapper.Map<TEntity>(entity);
-            _service.Add(entityMap);
+            try
+            {
+                var entityMap = _iMapper.Map<TEntity>(entity);
+                _service.Add(entityMap);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Update(TEntityDTO entity)
