@@ -34,14 +34,28 @@ namespace ProEventos.Application.Services
 
         public void Update(TEntityDTO entity)
         {
-            var entityMap = _iMapper.Map<TEntity>(entity);
-            _service.Update(entityMap);
+            try
+            {
+                var entityMap = _iMapper.Map<TEntity>(entity);
+                _service.Update(entityMap);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Delete(TEntityDTO entity)
         {
-            var entityMap = _iMapper.Map<TEntity>(entity);
-            _service.Delete(entityMap);
+            try
+            {
+                var entityMap = _iMapper.Map<TEntity>(entity);
+                _service.Delete(entityMap);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void DeleteRange(TEntityDTO[] entity)
